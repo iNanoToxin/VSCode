@@ -24,7 +24,7 @@ Token colors can be adjusted through the user `settings.json` file.
 | directive  | entity.name.function.directive.tree-sitter-query               |
 | quantifier | keyword.operator.arithmetic.quantifier.tree-sitter-query       |
 
-```json
+```jsonc
 // File: settings.json
 {
     "editor.tokenColorCustomizations": {
