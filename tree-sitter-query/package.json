@@ -1,0 +1,43 @@
+{
+    "name": "tree-sitter-query",
+    "displayName": "Tree Sitter Query",
+    "description": "Syntax highlighting for tree-sitter queries.",
+    "publisher": "iNanoToxin",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.0.0"
+    },
+    "categories": [
+        "Programming Languages",
+        "Snippets"
+    ],
+    "contributes": {
+        "languages": [
+            {
+                "id": "tree-sitter-query",
+                "aliases": [
+                    "Tree Sitter Query",
+                    "tree-sitter-query"
+                ],
+                "extensions": [
+                    ".scm",
+                    ".tsq"
+                ],
+                "configuration": "./language-configuration.json"
+            }
+        ],
+        "grammars": [
+            {
+                "language": "tree-sitter-query",
+                "scopeName": "source.tree-sitter-query",
+                "path": "./syntaxes/tree-sitter-query.tmLanguage.json"
+            }
+        ],
+        "snippets": [
+            {
+                "language": "tree-sitter-query",
+                "path": "./snippets/tree-sitter-query.code-snippets"
+            }
+        ]
+    }
+}

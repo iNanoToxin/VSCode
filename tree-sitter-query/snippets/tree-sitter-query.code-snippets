@@ -1,0 +1,132 @@
+{
+    // Regions
+    "region": {
+        "prefix": [
+            "reg",
+            "region"
+        ],
+        "body": [
+            ";; region $1\n",
+            "$0\n",
+            ";; endregion $1\n"
+        ],
+        "description": "Insert a region block into a tree-sitter query file. Region blocks are comments that are treated like foldable regions."
+    },
+    // eq? Family Predicates
+    "eq?": {
+        "prefix": "eq?",
+        "body": "(#eq? @${1:capture} $2)$0",
+        "description": [
+            "The `eq?` predicate allows you to match a capture against a single capture or string value.",
+            "The quantified capture will only match if all the captured nodes match the predicate.",
+            "The first argument must be a capture and the second argument can be either a capture or a string."
+        ],
+    },
+    "not-eq?": {
+        "prefix": "not-eq?",
+        "body": "(#not-eq? @${1:capture} $2)$0",
+        "description": [
+            "The `not-eq?` predicate is the complement of the `eq?` predicate.",
+            "The first argument must be a capture and the second argument can be either a capture or a string."
+        ]
+    },
+    "any-eq?": {
+        "prefix": "any-eq?",
+        "body": "(#any-eq? @${1:capture} $2)$0",
+        "description": [
+            "The `any-eq?` predicate is similar to the `eq?` predicate.",
+            "The quantified capture will only match if any of the captured nodes match the predicate.",
+            "The first argument must be a capture and the second argument can be either a capture or a string."
+        ]
+    },
+    "any-not-eq?": {
+        "prefix": "any-not-eq?",
+        "body": "(#any-not-eq? @${1:capture} $2)$0",
+        "description": [
+            "The `any-not-eq?` predicate is similar to the `not-eq?` predicate.",
+            "The quantified capture will only match if any of the captured nodes match the predicate.",
+            "The first argument must be a capture and the second argument can be either a capture or a string."
+        ]
+    },
+    // match? Family Predicates
+    "match?": {
+        "prefix": "match?",
+        "body": "(#match? @${1:capture} \"${2:regex}\")$0",
+        "description": [
+            "The `match?` predicate allows you to match a capture against a regular expression.",
+            "The quantified capture will only match if all the captured nodes match the predicate.",
+            "The first argument must be a capture and the second argument must be a regex string."
+        ],
+    },
+    "not-match?": {
+        "prefix": "not-match?",
+        "body": "(#not-match? @${1:capture} \"${2:regex}\")$0",
+        "description": [
+            "The `not-match?` predicate is the complement of the `match?` predicate.",
+            "The first argument must be a capture and the second argument must be a regex string."
+        ]
+    },
+    "any-match?": {
+        "prefix": "any-match?",
+        "body": "(#any-match? @${1:capture} \"${2:regex}\")$0",
+        "description": [
+            "The `any-match?` predicate is similar to the `match?` predicate.",
+            "The quantified capture will only match if any of the captured nodes match the predicate.",
+            "The first argument must be a capture and the second argument must be a regex string."
+        ]
+    },
+    "any-not-match?": {
+        "prefix": "any-not-match?",
+        "body": "(#any-not-match? @${1:capture} \"${2:regex}\")$0",
+        "description": [
+            "The `any-not-match?` predicate is similar to the `not-match?` predicate.",
+            "The quantified capture will only match if any of the captured nodes match the predicate.",
+            "The first argument must be a capture and the second argument must be a regex string."
+        ]
+    },
+    // any-of? Family Predicates
+    "any-of?": {
+        "prefix": "any-of?",
+        "body": "(#any-of? @${1:capture} \"${2:string}\")$0",
+        "description": [
+            "The `any-of?` predicate allows you to match a capture against multiple strings, and will match if the capture's text is equal to any of the strings.",
+            "The quantified capture will only match if all the captured nodes match the predicate.",
+            "The first argument must be a capture and the remaining arguments must be a string."
+        ],
+    },
+    "not-any-of?": {
+        "prefix": "not-any-of?",
+        "body": "(#not-any-of? @${1:capture} \"${2:string}\")$0",
+        "description": [
+            "The `not-any-of?` predicate is the complement of the `any-of?` predicate.",
+            "The first argument must be a capture and the remaining arguments must be a string."
+        ],
+    },
+    // is? Family Predicates
+    "is?": {
+        "prefix": "is?",
+        "body": "(#is? \"${1:string}\")$0",
+        "description": [
+            "The `is?` predicate allows you to assert that a capture has a given property.",
+            "The quantified capture will only match if all the captured nodes match the predicate.",
+            "The first argument must be a string and the second optional argument must be a string."
+        ],
+    },
+    "is-not?": {
+        "prefix": "is-not?",
+        "body": "(#is-not? \"${1:string}\")$0",
+        "description": [
+            "The `is-not?` predicate is the complement of the `is?` predicate.",
+            "The first argument must be a string and the second optional argument must be a string."
+        ],
+    },
+    // Directives
+    "set!": {
+        "prefix": "set!",
+        "body": "(#set! \"${1:string}\" \"${2:string}\")$0",
+        "description": [
+            "The `set!` directive allows you to associate key-value pairs with a pattern. The key and value can be any arbitrary text that you see fit.",
+            "The first argument must be a string and the second optional argument must be a string."
+        ],
+    }
+}

@@ -1,0 +1,142 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "Tree Sitter Query",
+	"patterns": [
+		{
+			"include": "#expression"
+		}
+	],
+	"repository": {
+		"region": {
+			"begin": "(;; (?:end)?region) ([a-zA-Z0-9_\\-\\.]+)$",
+			"end": "\n",
+			"captures": {
+				"1": {
+					"name": "region.tree-sitter-query"
+				},
+				"2": {
+					"name": "region.name.tree-sitter-query"
+				}
+			}
+		},
+		"comment": {
+			"name": "comment.tree-sitter-query",
+			"begin": ";",
+			"end": "\\n"
+		},
+		"node": {
+			"patterns": [
+				{
+					"name": "keyword.other.node.tree-sitter-query",
+					"match": "\\b(MISSING|_)\\b"
+				},
+				{
+					"name": "node.tree-sitter-query",
+					"match": "[a-zA-Z0-9_\\-][a-zA-Z0-9_\\-\\.\\?\\!]*"
+				}
+			]
+		},
+		"string": {
+			"name": "string.tree-sitter-query",
+			"begin": "\"",
+			"end": "\"",
+			"patterns": [
+				{
+					"name": "constant.character.escape.tree-sitter-query",
+					"match": "\\\\(?:n|r|t|0)"
+				}
+			]
+		},
+		"capture": {
+			"patterns": [
+				{
+					"name": "variable.capture.tree-sitter-query",
+					"match": "@[a-zA-Z0-9_\\-][a-zA-Z0-9_\\-\\.\\?\\!]*"
+				}
+			]
+		},
+		"field": {
+			"patterns": [
+				{
+					"captures": {
+						"1": {
+							"name": "entity.name.type.field.tree-sitter-query"
+						}
+					},
+					"match": "([a-zA-Z_]+):"
+				}
+			]
+		},
+		"directive": {
+			"patterns": [
+				{
+					"name": "entity.name.function.directive.tree-sitter-query",
+					"match": "(?:\\.|#)[a-zA-Z0-9_\\-][a-zA-Z0-9_\\-\\.\\?\\!]*"
+				}
+			]
+		},
+		"quantifier": {
+			"patterns": [
+				{
+					"name": "keyword.operator.arithmetic.quantifier.tree-sitter-query",
+					"match": "[\\+\\*\\?]"
+				}
+			]
+		},
+		"expression": {
+			"patterns": [
+				{
+					"include": "#expression-parenthesis"
+				},
+				{
+					"include": "#expression-bracket"
+				},
+				{
+					"include": "#region"
+				},
+				{
+					"include": "#comment"
+				},
+				{
+					"include": "#string"
+				},
+				{
+					"include": "#capture"
+				},
+				{
+					"include": "#directive"
+				},
+				{
+					"include": "#field"
+				},
+				{
+					"include": "#node"
+				},
+				{
+					"include": "#quantifier"
+				}
+			]
+		},
+		"expression-parenthesis": {
+			"contentName": "expression.parenthesis.tree-sitter-query",
+			"begin": "\\(",
+			"end": "\\)",
+			"patterns": [
+				{
+					"include": "#expression"
+				}
+			]
+		},
+		"expression-bracket": {
+			"contentName": "expression.bracket.tree-sitter-query",
+			"begin": "\\[",
+			"end": "\\]",
+			"patterns": [
+				{
+					"include": "#expression"
+				}
+			]
+		}
+	},
+	"scopeName": "source.tree-sitter-query"
+}
