@@ -24,12 +24,11 @@ Token colors can be adjusted through the user `settings.json` file.
 | directive  | entity.name.function.directive.tree-sitter-query               |
 | quantifier | keyword.operator.arithmetic.quantifier.tree-sitter-query       |
 
-```jsonc
-// File: settings.json
+Example usage in `settings.json` file:
+```json
 {
     "editor.tokenColorCustomizations": {
         "textMateRules": [
-            // Tree Sitter Query Colors
             {
                 "name": "node",
                 "scope": "keyword.other.node.tree-sitter-query",
@@ -58,7 +57,6 @@ Token colors can be adjusted through the user `settings.json` file.
                     "foreground": "#79b8ff"
                 }
             }
-            // End Tree Sitter Query Colors
         ]
     }
 }
